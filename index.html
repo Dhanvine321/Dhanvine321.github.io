@@ -3,12 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Navigation Bar</title>
+  <title>Dhanvine Website</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     body {
       background: linear-gradient(to right, rgb(28, 28, 170), rgb(90, 5, 90));
+      /* background: white */
     }
     html {
       scroll-behavior: smooth;
@@ -25,6 +26,32 @@
 
     #about button:hover {
       transform: scale(1.1);
+    }
+    #tagline-container {
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    #tagline {
+      border-right: .2em solid orange;
+      font-weight: bold;
+      display: inline;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink-caret {
+      from, to { border-color: transparent }
+      50% { border-color: orange; }
+    }
+
+    #tagline {
+      animation:
+        typing 3.5s steps(40, end),
+        blink-caret .75s step-end infinite;
     }
   </style>
 </head>
@@ -47,30 +74,23 @@
   <section id="intro" class="flex items-center justify-between p-10">
     <div class="mr-10">
       <h1 class="text-8xl font-bold text-gray-300">I am Dhanvine</h1>
-      <p id="tagline" class="text-3xl text-yellow-300">Student Developer</p>
-        <a href="#about" class="mt-4 inline-block px-6 py-3 text-lg text-black bg-white hover:bg-black hover:text-white rounded">About Me</a>
+      <div id="tagline-container">
+        <p id="tagline" class="text-3xl text-yellow-400"></p>
+      </div>
+        <a href="#about" class="mt-4 inline-block px-6 py-3 text-lg text-white bg-blue-500 hover:bg-white hover:text-blue-500 hover:border-blue-500 border-blue-500 border-2 rounded">About Me</a>
       </div>
     <img src="assets/dhanvine-photo-6.svg" alt="Dhanvine" width="600" height="600">
   </section>
 
   <section id="about" class="p-10 flex flex-col items-center" data-aos="fade-up">
-    <h2 class="text-4xl font-bold text-gray-900 mb-4">About</h2>
-    <p class="text-gray-300 mb-4">
-      This is a sample paragraph for the About section...
-    </p>
-    <div class="relative">
-      <img src="assets/dhanvine-photo-4.svg" alt="Dhanvine" class="w-64 h-64 rounded-full mb-4">
-      <div class="absolute top-0 left-0 flex flex-wrap justify-around items-center w-full h-full">
-        <button class="w-16 h-16 rounded-full bg-blue-500 text-white" data-detail="I am 20 years old.">Age</button>
-        <button class="w-16 h-16 rounded-full bg-blue-500 text-white" data-detail="I am 20 years old.">School</button>
-        <button class="w-16 h-16 rounded-full bg-blue-500 text-white" data-detail="I am 20 years old.">Location</button>
-        <div id="popup" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
-          <div class="bg-white p-4 rounded shadow-lg">
-            <p id="popup-detail"></p>
-            <button id="close-popup" class="mt-4 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+    <div class="bg-white shadow-xl rounded-lg p-10 w-full md:w-3/4 lg:w-9/10 h-auto md:h-96">
+      <h2 class="text-4xl font-bold text-gray-900 mb-4 underline text-blue-500 text-center">About</h2>
+      <p class="text-gray-900 mb-4 text-center">
+        Hey! I am Dhanvine, an IP5 student currently studying in Temasek Junior College.
+      </p>
+      <div class="text-center">
+            <a href="resume.html" class="mt-4 inline-block px-6 py-3 text-lg text-white bg-blue-500 hover:bg-white hover:text-blue-500 hover:border-blue-500 border-blue-500 border-2 rounded">Resume</a>
           </div>
-        </div>
-      </div>
     </div>
   </section>
   
@@ -102,6 +122,36 @@
       mirror: false,
     });
   </script>
+  <script>
+    const texts = ['Student Developer', 'AI Researcher'];
+    let count = 0;
+    let index = 0;
+    let currentText = '';
+    let letter = '';
+    let isDeleting = false;
 
+    (function type() {
+      if (count === texts.length) {
+        count = 0;
+      }
+      currentText = texts[count];
+      letter = isDeleting ? currentText.slice(0, --index) : currentText.slice(0, ++index);
+
+      document.querySelector('#tagline').textContent = letter;
+      if (!isDeleting && letter.length === currentText.length) {
+        setTimeout(() => isDeleting = true, 1000);
+      } else if (isDeleting && letter === '') {
+        isDeleting = false;
+        count++;
+      }
+      setTimeout(type, isDeleting ? 100 : 50);
+    }());
+  </script>
+  <script>
+    if ('scrollRestoration' in history) {
+      history.scrollRestoration = 'manual';
+    }
+    window.scrollTo(0, 0);
+  </script>
 </body>
 </html>
