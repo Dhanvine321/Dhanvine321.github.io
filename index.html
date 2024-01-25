@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation Bar</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(to right, rgb(28, 28, 170), rgb(90, 5, 90));
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    #intro {
+      background-image: url('assets/background-3.svg');
+      background-size: cover;
+      position: relative;
+      overflow: hidden;
+    }
+    #about button {
+      transition: all 0.3s ease;
+    }
+
+    #about button:hover {
+      transform: scale(1.1);
+    }
+  </style>
+</head>
+<body class="text-gray-300">
+  <header class="shadow-lg">
+    <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <a class="title-font font-medium text-gray-900 mb-4 md:mb-0">
+        <span class="ml-1 text-2xl text-gray-300">Dhanvine's Website</span>
+      </a>
+      <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+        <a href="#about" class="mr-5 text-gray-300 hover:text-blue-300">About</a>
+        <a href="#skills" class="mr-5 text-gray-300 hover:text-blue-300">Skills</a>
+        <a href="#experience" class="mr-5 text-gray-300 hover:text-blue-300">Experience</a>
+        <a href="#projects" class="mr-5 text-gray-300 hover:text-blue-300">Projects</a>
+        <a href="#certifications" class="mr-5 text-gray-300 hover:text-blue-300">Certifications</a>
+      </nav>
+    </div>
+  </header>
+
+  <section id="intro" class="flex items-center justify-between p-10">
+    <div class="mr-10">
+      <h1 class="text-8xl font-bold text-gray-300">I am Dhanvine</h1>
+      <p id="tagline" class="text-3xl text-yellow-300">Student Developer</p>
+        <a href="#about" class="mt-4 inline-block px-6 py-3 text-lg text-black bg-white hover:bg-black hover:text-white rounded">About Me</a>
+      </div>
+    <img src="assets/dhanvine-photo-6.svg" alt="Dhanvine" width="600" height="600">
+  </section>
+
+  <section id="about" class="p-10 flex flex-col items-center" data-aos="fade-up">
+    <h2 class="text-4xl font-bold text-gray-900 mb-4">About</h2>
+    <p class="text-gray-300 mb-4">
+      This is a sample paragraph for the About section...
+    </p>
+    <div class="relative">
+      <img src="assets/dhanvine-photo-4.svg" alt="Dhanvine" class="w-64 h-64 rounded-full mb-4">
+      <div class="absolute top-0 left-0 flex flex-wrap justify-around items-center w-full h-full">
+        <button class="w-16 h-16 rounded-full bg-blue-500 text-white" data-detail="I am 20 years old.">Age</button>
+        <button class="w-16 h-16 rounded-full bg-blue-500 text-white" data-detail="I am 20 years old.">School</button>
+        <button class="w-16 h-16 rounded-full bg-blue-500 text-white" data-detail="I am 20 years old.">Location</button>
+        <div id="popup" class="hidden fixed top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+          <div class="bg-white p-4 rounded shadow-lg">
+            <p id="popup-detail"></p>
+            <button id="close-popup" class="mt-4 px-4 py-2 bg-red-500 text-white rounded">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="skills" class="p-10 bg-gray-200" data-aos="fade-up">
+    <h2 class="text-4xl font-bold text-blue-300">Skills</h2>
+    <!-- Skills content goes here -->
+  </section>
+  
+  <section id="experience" class="p-10 bg-gray-200" data-aos="fade-up">
+    <h2 class="text-4xl font-bold text-blue-300">Experience</h2>
+    <!-- Experience content goes here -->
+  </section>
+  
+  <section id="projects" class="p-10 bg-gray-200" data-aos="fade-up">
+    <h2 class="text-4xl font-bold text-blue-300">Projects</h2>
+    <!-- Projects content goes here -->
+  </section>
+  
+  <section id="certifications" class="p-10 bg-gray-200" data-aos="fade-up">
+    <h2 class="text-4xl font-bold text-blue-300">Certifications</h2>
+    <!-- Certifications content goes here -->
+  </section>
+
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
+  <script src="main.js"></script>
+  <script>
+    AOS.init({
+      once: true,
+      mirror: false,
+    });
+  </script>
+
+</body>
+</html>
