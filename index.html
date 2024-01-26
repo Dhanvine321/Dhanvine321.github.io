@@ -56,6 +56,87 @@
         typing 3.5s steps(40, end),
         blink-caret .75s step-end infinite;
     }
+    .timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: #1c1ca8;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+  }
+
+  .container {
+    padding: 10px 40px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+  }
+
+  .container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: white;
+    border: 4px solid #1c1ca8;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+  }
+
+  .left {
+    left: 0;
+  }
+
+  .right {
+    left: 50%;
+  }
+
+  .left::before {
+    content: ' ';
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid white;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent white;
+  }
+
+  .right::before {
+    content: ' ';
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+
+  .right::after {
+    left: -16px;
+  }
+
+  .content {
+    padding: 20px 30px;
+    background-color: white;
+    position: relative;
+    border-radius: 6px;
+  }
   </style>
 </head>
 <body id="body" class="text-gray-300">
@@ -91,7 +172,7 @@
       <img src="assets/dhanvine-photo-7-big.svg" alt="Dhanvine" class="w-full md:w-1/2 h-auto md:mr-10">
       <div class="w-full md:w-1/2">
         <h2 class="text-4xl font-bold text-gray-900 mb-4 text-blue-500 text-center md:text-left">About Me!</h2>
-        <p class="text-gray-900 mb-4 text-center font-medium text-xl">
+        <p class="text-gray-900 mb-4 text-left font-medium text-xl">
           Hi! I'm Dhanvine, a student developer with a head for code and a heart for research AI. From iOS app development to machine learning mastery, I wield a diverse coding arsenal to craft innovative solutions and push the boundaries of what's possible. My dream? To delve into the fascinating world of research AI, where I can use my skills to make a real impact and rewrite the future of technology. Join me on this journey of exploration and innovation, one line of code at a time!
         </p>
         <div class="text-center md:text-left">
@@ -102,23 +183,174 @@
   </section>
   
   <section id="skills" class="p-10 bg-gray-200" data-aos="fade-up">
-    <h2 class="text-4xl font-bold text-blue-300">Skills</h2>
-    <!-- Skills content goes here -->
+    <h2 class="text-4xl font-bold text-blue-500 mb-10">Skills</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
+      <div class="bg-white shadow-xl rounded-lg p-6">
+        <img src="assets/python-logo.svg" alt="Python" class="w-24 h-24 mb-4 mx-auto animate-pulse">
+        <h3 class="text-2xl font-bold text-blue-500 text-center">Python</h3>
+        <p class="text-gray-900 text-center">Python is a powerful, flexible, open-source language that is easy to learn, easy to use, and has powerful libraries for data manipulation and analysis.</p>
+      </div>
+      <div class="bg-white shadow-xl rounded-lg p-6">
+        <img src="assets/ai-logo.svg" alt="Machine Learning" class="w-24 h-24 mb-4 mx-auto animate-pulse">
+        <h3 class="text-2xl font-bold text-blue-500 text-center">Machine Learning</h3>
+        <p class="text-gray-900 text-center">Machine Learning is a branch of AI that enables a system to learn from data rather than through explicit programming.</p>
+      </div>
+      <div class="bg-white shadow-xl rounded-lg p-6">
+        <img src="assets/research-logo.svg" alt="Research" class="w-24 h-24 mb-4 mx-auto animate-pulse">
+        <h3 class="text-2xl font-bold text-blue-500 text-center">Research</h3>
+        <p class="text-gray-900 text-center">Research is the systematic investigation into and study of materials and sources in order to establish facts and reach new conclusions.</p>
+      </div>
+      <!-- add skill if need -->
+    </div>
   </section>
   
   <section id="experience" class="p-10 bg-gray-200" data-aos="fade-up">
-    <h2 class="text-4xl font-bold text-blue-300">Experience</h2>
-    <!-- Experience content goes here -->
+    <h2 class="text-4xl font-bold text-blue-500 mb-10">Experience</h2>
+    <div class="flex justify-center space-x-4 mb-10">
+      <button class="px-6 py-3 bg-blue-500 text-white rounded text-xl" onclick="toggle('school')">
+        School
+      </button>
+      <button class="px-6 py-3 bg-blue-500 text-white rounded text-xl" onclick="toggle('internship')">
+        Internship/Work
+      </button>
+    </div>
+    <div id="timelineContainer" class="flex flex-col space-y-2">
+      <div id="school" class="hidden">
+        <div class="timeline">
+          <div class="container left">
+            <div class="content">
+              <h2 class="text-xl font-bold text-blue-500">Chairperson of Infocomm Club</h2>
+              <p class="text-l font-medium text-blue-500">Description of your experience as Chairperson of Infocomm Club...</p>
+            </div>
+          </div>
+          <div class="container right">
+            <div class="content">
+              <h2 class="text-xl font-bold text-blue-500">Technology Lead of BLAH Team</h2>
+              <p class="text-l font-medium text-blue-500">Description of your experience as Technology Lead of BLAH Team...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="internship" class="hidden">
+        <div class="timeline">
+          <div class="container left">
+            <div class="content">
+              <h2 class="text-xl font-bold text-blue-500">Intern at SHINE Children & Youth Services</h2>
+              <p class="text-l font-medium text-blue-500">Description of your experience at SHINE Children & Youth Services...</p>
+            </div>
+          </div>
+          <div class="container right">
+            <div class="content">
+              <h2 class="text-xl font-bold text-blue-500">Intern at A*STAR IHPC</h2>
+              <p class="text-l font-medium text-blue-500">Description of your experience at A*STAR IHPC...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
   
   <section id="projects" class="p-10 bg-gray-200" data-aos="fade-up">
-    <h2 class="text-4xl font-bold text-blue-300">Projects</h2>
-    <!-- Projects content goes here -->
+    <h2 class="text-4xl font-bold text-blue-500 mb-10">Projects</h2>
+    <div class="grid grid-cols-3 gap-4">
+      <div class="card rounded overflow-hidden shadow-lg transform transition duration-500 ease-in-out hover:scale-105">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2 text-blue-500">Farrer Park Hospital AI-Powered Nurse Freelance Website</div>
+          <p class="text-gray-700 text-base"><strong>Time Period: </strong> October 2023 - January 2024</p>
+          <p class="text-gray-700 text-base"><strong>Collaborators: </strong>Team CareWave of AWS Accelerator class of 2023</p>
+          <p class="text-gray-700 text-base"><strong>Project Description: </strong>This project was developed as a final project for Farrer Park Hospital as part of the AWS Data Science Accelerator 2023, where we presented it and got best project award.</p>
+        </div>
+      </div>
+      <div class="card rounded overflow-hidden shadow-lg transform transition duration-500 ease-in-out hover:scale-105"">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2 text-blue-500">
+            <a href="https://www.researchgate.net/publication/374173696_MALPRED_Predictive_Modeling_for_Malware_Detection_in_Windows_Systems_using_Ensemble_Learning" target="_blank">MALPRED: Predictive Modeling for Malware Detection in Windows Systems using Ensemble Learning</a>
+          </div>
+          <p class="text-gray-700 text-base"><strong>Time Period: </strong> June 2023 - Present</p>
+          <p class="text-gray-700 text-base"><strong>Collaborators: </strong>Le Qi, Eugene, Mahir, Prannaya, Justin, Yik Ting</p>
+          <p class="text-gray-700 text-base"><strong>Project Description: </strong>One of the authors of this paper and worked on this alongside my friends during June Holidays.<br> Paper Submision: PENDING</p>
+        </div>
+      </div>
+      <div class="card rounded overflow-hidden shadow-lg transform transition duration-500 ease-in-out hover:scale-105"">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2 text-blue-500">
+            <a href="tamil-punarchi.netlfiy.app" target="_blank">Tamil Punarchi Web App</a>
+          </div>
+          <p class="text-gray-700 text-base"><strong>Time Period: </strong> Jan 2023 - March 2023</p>
+          <p class="text-gray-700 text-base"><strong>Collaborators: </strong>Mdm Soodi</p>
+          <p class="text-gray-700 text-base"><strong>Project Description: </strong>A simple web application which can solve punarch, a set of tamil rules that dictate how 2 words should combine when brought together. I utilsied a decision tree model to priortise the laws and created a dataframe to access individual letters as the tamil unicode characters comprise of more than 1 unicode characters.</p>
+        </div>
+      </div>
+    </div>
   </section>
-  
+
+
   <section id="certifications" class="p-10 bg-gray-200" data-aos="fade-up">
-    <h2 class="text-4xl font-bold text-blue-300">Certifications</h2>
-    <!-- Certifications content goes here -->
+    <h2 class="text-4xl font-bold text-blue-500 mb-10">Certifications</h2>
+    <ul class="space-y-4">
+      <li class="p-4 border border-gray-300 rounded shadow">
+        <h3 class="font-bold text-xl mb-2 text-gray-700">Machine Learning Specialization</h3>
+        <p class="text-gray-700 text-base"><strong>Issued by: </strong>DeepLearning.AI & Stanford Univeristy</p>
+        <p class="text-gray-700 text-base"><strong>Issued on: </strong>OCT 2023</p>
+        <p class="text-gray-700 text-base"><strong>Description: </strong>Completed a online course by Stanford Univeristy and DeepLearning.AI on Mahcine Learning and some math behind it</p>
+      </li>
+      <li class="p-4 border border-gray-300 rounded shadow">
+        <h3 class="font-bold text-xl mb-2 text-gray-700">Harvard CS50x Introduction to Computer Science</h3>
+        <p class="text-gray-700 text-base"><strong>Issued by: </strong>Harvard Univerity & EDX</p>
+        <p class="text-gray-700 text-base"><strong>Issued on: </strong>Feb 2023</p>
+        <p class="text-gray-700 text-base"><strong>Description: </strong>Completed a online course by Harvard on Introduction to CS and computational thinking</p>
+      </li>
+      <li class="p-4 border border-gray-300 rounded shadow">
+        <h3 class="font-bold text-xl mb-2 text-gray-700">Space Data Series: Remote Sensing Workshop 2024 Certification of Completiton</h3>
+        <p class="text-gray-700 text-base"><strong>Issued by: </strong>Space Faculty</p>
+        <p class="text-gray-700 text-base"><strong>Issued on: </strong>Dec 2023</p>
+        <p class="text-gray-700 text-base"><strong>Description: </strong>Attended a Remote Sensing using satelites workshop in NUS CRISP and learnt about AI and its applications in Remote sensing and presented a project utilsing remote sensing to determine water qualities</p>
+      </li>
+    </ul>
+  </section>
+
+  <section id="contact" class="p-10 bg-gray-200" data-aos="fade-up">
+    <div class="flex flex-col">
+      <h2 class="text-4xl font-bold text-blue-500 mb-10">Contact Me</h2>
+      <form class="w-full max-w-lg">
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-first-name">
+            Name
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" id="grid-first-name" type="text" placeholder="Dhanvine">
+        </div>
+        <div class="w-full md:w-1/2 px-3">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-last-name">
+            Email
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-last-name" type="email" placeholder="random.user@email.com">
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full px-3">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+            Mobile No.
+          </label>
+          <input class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" type="tel" placeholder="+65 8888 8888">
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3 mb-6">
+        <div class="w-full px-3">
+          <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-password">
+            Purpose
+          </label>
+          <textarea class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-password" placeholder="Enter your purpose..."></textarea>
+        </div>
+      </div>
+      <div class="flex flex-wrap -mx-3 mb-2">
+        <div class="w-full px-3">
+          <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit">
+            Submit
+          </button>
+        </div>
+      </div>
+    </form>
   </section>
 
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.1/dist/aos.js"></script>
@@ -153,6 +385,17 @@
       }
       setTimeout(type, isDeleting ? 100 : 50);
     }());
+    function toggle(id) {
+      var school = document.getElementById('school');
+      var internship = document.getElementById('internship');
+      if (id === 'school') {
+        school.classList.remove('hidden');
+        internship.classList.add('hidden');
+      } else {
+        internship.classList.remove('hidden');
+        school.classList.add('hidden');
+      }
+    }
   </script>
   <script>
     if ('scrollRestoration' in history) {
@@ -175,6 +418,11 @@
         overlay.style.opacity = opacity < 0 ? 0 : opacity;
         dhanvinePhoto.style.opacity = 1 - opacity < 0 ? 1 : 1 - opacity;
       }
+    });
+    document.querySelectorAll('.timeline-title').forEach(title => {
+      title.addEventListener('click', () => {
+        title.nextElementSibling.classList.toggle('hidden');
+      });
     });
   </script>
 </body>
